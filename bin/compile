@@ -96,8 +96,8 @@ bpwatch start pre_compile
   source $BIN_DIR/steps/hooks/pre_compile
 bpwatch stop pre_compile
 
-# Clone the already compiled ffmped binaries from github
-FFMPEG_BINARY="https://github.com/dzello/ffmpeg-heroku.git"
+# Clone the static build of ffmped binaries from github
+FFMPEG_BINARY="https://github.com/integricho/ffmpeg1.2-static-with-codecs"
 VENDOR_FOLDER="vendor/ffmpeg"
 
 mkdir -p $BUILD_DIR/$VENDOR_FOLDER  &> /dev/null
