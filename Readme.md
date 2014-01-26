@@ -31,53 +31,55 @@ Example usage:
     Compressing objects: 100% (5/5), done.
     Writing objects: 100% (6/6), 786 bytes, done.
     Total 6 (delta 0), reused 0 (delta 0)
+
     -----> Fetching custom git buildpack... done
     -----> Python app detected
+    -----> ffmpeg will be cloned into /app/.heroku/vendor/ffmpeg
     -----> Cloning pre-built ffmpeg repository...
-    -----> Preparing Python interpreter (2.7.2)
-    -----> Creating Virtualenv (1.8.4)
-           Also creating executable in .heroku/venv/bin/python
-           Installing distribute...done.
-           Installing pip...done.
-           Running virtualenv with interpreter /usr/local/bin/python2.7
-    -----> Installing dependencies using pip (1.1)
-           Downloading/unpacking gevent==0.13.8 (from -r requirements.txt (line 2))
-             Storing download in cache at /app/tmp/repo.git/.cache/pip_downloads/http%3A%2F%2Fpypi.python.org%2Fpackages%2Fsource%2Fg%2Fgevent%2Fgevent-0.13.8.tar.gz
+    -----> No runtime.txt provided; assuming python-2.7.6.
+    -----> Preparing Python runtime (python-2.7.6)
+    -----> Installing Distribute (0.6.36)
+    -----> Installing Pip (1.3.1)
+    -----> Installing dependencies using Pip (1.3.1)
+           Downloading/unpacking gevent==0.13.8 (from -r requirements.txt (line 1))
              Running setup.py egg_info for package gevent
 
-           Downloading/unpacking gunicorn==0.14.3 (from -r requirements.txt (line 3))
-             Storing download in cache at /app/tmp/repo.git/.cache/pip_downloads/http%3A%2F%2Fpypi.python.org%2Fpackages%2Fsource%2Fg%2Fgunicorn%2Fgunicorn-0.14.3.tar.gz
+           Downloading/unpacking gunicorn==0.17.2 (from -r requirements.txt (line 2))
              Running setup.py egg_info for package gunicorn
 
-           Downloading/unpacking greenlet (from gevent==0.13.8->-r requirements.txt (line 2))
-             Storing download in cache at /app/tmp/repo.git/.cache/pip_downloads/http%3A%2F%2Fpypi.python.org%2Fpackages%2Fsource%2Fg%2Fgreenlet%2Fgreenlet-0.4.0.zip
+           Downloading/unpacking greenlet (from gevent==0.13.8->-r requirements.txt (line 1))
              Running setup.py egg_info for package greenlet
 
            Installing collected packages: gevent, gunicorn, greenlet
              Running setup.py install for gevent
                building 'gevent.core' extension
-               gcc -pthread -fno-strict-aliasing -g -O2 -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes -fPIC -I/usr/local/include/python2.7 -c gevent/core.c -o build/temp.linux-x86_64-2.7/gevent/core.o
+               gcc -pthread -fno-strict-aliasing -g -O2 -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes -fPIC -I/app/.heroku/python/include/python2.7 -c gevent/core.c -o build/temp.linux-x86_64-2.7/gevent/core.o
                gcc -pthread -shared build/temp.linux-x86_64-2.7/gevent/core.o -levent -o build/lib.linux-x86_64-2.7/gevent/core.so
-               Linking /tmp/build_3fhn8k1szm2sp/.heroku/venv/build/gevent/build/lib.linux-x86_64-2.7/gevent/core.so to /tmp/build_3fhn8k1szm2sp/.heroku/venv/build/gevent/gevent/core.so
+               Linking /tmp/pip-build-u49411/gevent/build/lib.linux-x86_64-2.7/gevent/core.so to /tmp/pip-build-u49411/gevent/gevent/core.so
 
              Running setup.py install for gunicorn
 
-               Installing gunicorn_paster script to /tmp/build_3fhn8k1szm2sp/.heroku/venv/bin
-               Installing gunicorn script to /tmp/build_3fhn8k1szm2sp/.heroku/venv/bin
-               Installing gunicorn_django script to /tmp/build_3fhn8k1szm2sp/.heroku/venv/bin
+               Installing gunicorn_paster script to /app/.heroku/python/bin
+               Installing gunicorn script to /app/.heroku/python/bin
+               Installing gunicorn_django script to /app/.heroku/python/bin
              Running setup.py install for greenlet
+               gcc -pthread -fno-strict-aliasing -g -O2 -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes -fPIC -fno-tree-dominator-opts -I/app/.heroku/python/include/python2.7 -c /tmp/tmpvtXjyE/simple.c -o /tmp/tmpvtXjyE/tmp/tmpvtXjyE/simple.o
+               /tmp/tmpvtXjyE/simple.c:1: warning: function declaration isn’t a prototype
                building 'greenlet' extension
-               gcc -pthread -fno-strict-aliasing -g -O2 -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes -fPIC -I/usr/local/include/python2.7 -c greenlet.c -o build/temp.linux-x86_64-2.7/greenlet.o
-               greenlet.c: In function 'g_switch':
-               greenlet.c:543: warning: 'err' may be used uninitialized in this function
+               gcc -pthread -fno-strict-aliasing -g -O2 -DNDEBUG -g -fwrapv -O3 -Wall -Wstrict-prototypes -fPIC -fno-tree-dominator-opts -I/app/.heroku/python/include/python2.7 -c greenlet.c -o build/temp.linux-x86_64-2.7/greenlet.o
+               In file included from slp_platformselect.h:12,
+                                from greenlet.c:416:
+               platform/switch_amd64_unix.h:40: warning: ‘noclone’ attribute directive ignored
+               platform/switch_amd64_unix.h:43: warning: ‘noclone’ attribute directive ignored
                gcc -pthread -shared build/temp.linux-x86_64-2.7/greenlet.o -o build/lib.linux-x86_64-2.7/greenlet.so
-               Linking /tmp/build_3fhn8k1szm2sp/.heroku/venv/build/greenlet/build/lib.linux-x86_64-2.7/greenlet.so to /tmp/build_3fhn8k1szm2sp/.heroku/venv/build/greenlet/greenlet.so
+               Linking /tmp/pip-build-u49411/greenlet/build/lib.linux-x86_64-2.7/greenlet.so to /tmp/pip-build-u49411/greenlet/greenlet.so
 
            Successfully installed gevent gunicorn greenlet
            Cleaning up...
     -----> Discovering process types
            Procfile declares types -> web
-    -----> Compiled slug size: 79.3MB
+
+    -----> Compressing... done, 71.9MB
     -----> Launching... done, v5
            http://random-app-name-1234.herokuapp.com deployed to Heroku
 
@@ -86,16 +88,17 @@ Example usage:
     $ heroku run bash
     Running `bash` attached to terminal... up, run.1627
     ~ $ ffmpeg
-    ffmpeg version git-2012-11-15-62006b5 Copyright (c) 2000-2012 the FFmpeg developers
-      built on Nov 15 2012 09:35:53 with gcc 4.4.3 (Ubuntu 4.4.3-4ubuntu5)
-      configuration: --enable-shared --disable-asm --prefix=/app/vendor/ffmpeg
-      libavutil      52.  6.100 / 52.  6.100
-      libavcodec     54. 71.100 / 54. 71.100
-      libavformat    54. 36.100 / 54. 36.100
-      libavdevice    54.  3.100 / 54.  3.100
-      libavfilter     3. 23.100 /  3. 23.100
-      libswscale      2.  1.102 /  2.  1.102
-      libswresample   0. 16.100 /  0. 16.100
+    ffmpeg version 1.2-static Copyright (c) 2000-2013 the FFmpeg developers
+      built on Jan 26 2014 09:28:15 with gcc 4.6 (Ubuntu/Linaro 4.6.3-1ubuntu5)
+      configuration: --prefix=/home/andrean/dev/tools/ffmpeg-static/target --extra-cflags='-I/home/andrean/dev/tools/ffmpeg-static/target/include -static' --extra-ldflags='-L/home/andrean/dev/tools/ffmpeg-static/target/lib -lm -static' --extra-version=static --disable-debug --disable-shared --enable-static --extra-cflags=--static --disable-ffplay --disable-ffserver --disable-doc --enable-gpl --enable-pthreads --enable-postproc --enable-gray --enable-runtime-cpudetect --enable-libfaac --enable-libmp3lame --enable-libtheora --enable-libvorbis --enable-libx264 --enable-libxvid --enable-bzlib --enable-zlib --enable-nonfree --enable-version3 --enable-libvpx --disable-devices
+      libavutil      52. 18.100 / 52. 18.100
+      libavcodec     54. 92.100 / 54. 92.100
+      libavformat    54. 63.104 / 54. 63.104
+      libavdevice    54.  3.103 / 54.  3.103
+      libavfilter     3. 42.103 /  3. 42.103
+      libswscale      2.  2.100 /  2.  2.100
+      libswresample   0. 17.102 /  0. 17.102
+      libpostproc    52.  2.100 / 52.  2.100
     Hyper fast Audio and Video encoder
     usage: ffmpeg [options] [[infile options] -i infile]... {[outfile options] outfile}...
 
