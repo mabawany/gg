@@ -119,10 +119,13 @@ Specify a Runtime
 You can also provide arbitrary releases Python with a `runtime.txt` file.
 
     $ cat runtime.txt
-    python-3.3.2
+    python-3.4.2
 
 Runtime options include:
 
-- python-2.7.4
-- python-3.3.2
-- pypy-1.9 (experimental)
+- python-2.7.8
+- python-3.4.2
+- pypy-2.4.0 (unsupported, experimental)
+- pypy3-2.3.1 (unsupported, experimental)
+
+Other [unsupported runtimes](https://github.com/heroku/heroku-buildpack-python/tree/master/builds/runtimes) are available as well.
